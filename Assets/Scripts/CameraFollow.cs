@@ -7,7 +7,7 @@ public class CameraFollow : MonoBehaviour
 
     [Header("Configuración")]
     public float velocidadSeguimiento = 5f;
-    public Vector3 offset = new Vector3(2f, 1f, -10f);
+    public Vector3 offset = new(2,1,-10);
     // X positivo → la cámara va un poco adelante del jugador
     // Y positivo → la cámara va un poco arriba
     // Z debe ser -10 siempre en juegos 2D
@@ -18,6 +18,7 @@ public class CameraFollow : MonoBehaviour
 
     private void LateUpdate()
     {
+       
         // LateUpdate se ejecuta después del Update del jugador,
         // evitando que la cámara "tiemble"
 
