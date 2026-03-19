@@ -1,8 +1,10 @@
 using UnityEngine;
 
-// Colocar en un objeto invisible debajo del nivel (trigger 2D muy ancho)
 public class FallDetector : MonoBehaviour
 {
+    [Header("Punto de respawn")]
+    public Transform puntoRespawn; // Asignar en el Inspector
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -10,8 +12,11 @@ public class FallDetector : MonoBehaviour
             PlayerHealth ph = other.GetComponent<PlayerHealth>();
             ph?.RecibirDaño();
 
-            // Respawnear al jugador en el origen (ajustar posición según nivel)
-            other.transform.position = Vector3.zero;
+            // Respawnear en el punto definido o en posición segura
+            if (puntoRespawn != null)
+                other.transform.position = puntoRespawn.position;
+            else
+                other.transform.position = new Vector3(-6, 0, 0); // Posición segura por defecto
         }
     }
 }

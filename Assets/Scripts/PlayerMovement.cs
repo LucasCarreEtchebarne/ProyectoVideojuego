@@ -4,18 +4,25 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 5f;
-    public float jumpForce = 7f;
+    [Header("Configuración")]
+    public float speed = 3f;
+    public float jumpForce = 8f;
 
+    [Header("Referencias")]
     public Enemy enemigo;
-    private bool enemigoActivado = false;
 
+    private bool enemigoActivado = false;
     private Rigidbody2D rb;
-    private bool isGrounded;
+    private int colisionesConSuelo = 0;
+
+    private bool isGrounded => colisionesConSuelo > 0;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        if (enemigo == null)
+            enemigo = FindObjectOfType<Enemy>();
     }
 
     void Update()
@@ -23,8 +30,7 @@ public class PlayerMovement : MonoBehaviour
         float move = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(move * speed, rb.velocity.y);
 
-        // ACTIVAR ENEMIGO cuando el jugador empiece a moverse
-        if (move != 0 && !enemigoActivado)
+        if (move != 0 && !enemigoActivado && enemigo != null)
         {
             enemigo.ActivarPersecucion();
             enemigoActivado = true;
@@ -32,23 +38,20 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            rb.velocity = new Vector2(rb.velocity.x, 0f);
+            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
-        {
-            isGrounded = true;
-        }
+            colisionesConSuelo++;
     }
 
     void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
-        {
-            isGrounded = false;
-        }
+            colisionesConSuelo--;
     }
 }

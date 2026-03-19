@@ -1,5 +1,5 @@
 using UnityEngine;
-using TMPro; // Requiere TextMeshPro (incluido en Unity)
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
@@ -11,17 +11,27 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null) Instance = this;
-        else Destroy(gameObject);
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(gameObject);
     }
 
-    // Actualiza los textos en pantalla con los valores del GameManager
+    private void Start()
+    {
+        Debug.Log("UIManager Start - Vidas: " + GameManager.Instance?.vidasActuales);
+        ActualizarUI();
+    }
+
     public void ActualizarUI()
     {
         if (GameManager.Instance == null) return;
 
-        textoPuntaje.text = "Puntaje: " + GameManager.Instance.puntaje;
-        textoVidas.text   = "Vidas: "   + GameManager.Instance.vidasActuales;
+        if (textoPuntaje != null)
+            textoPuntaje.text = "Puntaje: " + GameManager.Instance.puntaje;
+
+        if (textoVidas != null)
+            textoVidas.text = "Vidas: " + GameManager.Instance.vidasActuales;
     }
 }
 

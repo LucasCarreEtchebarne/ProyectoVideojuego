@@ -1672,9 +1672,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c6afbc761932f47963c46f95d7bdb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jugador: {fileID: 0}
+  jugador: {fileID: 2068855444}
   velocidadSeguimiento: 5
-  offset: {x: 2, y: 1, z: -10}
+  offset: {x: 0, y: 0, z: -10}
   seguirX: 1
   seguirY: 0
 --- !u!1 &555787329
@@ -2418,7 +2418,7 @@ GameObject:
   - component: {fileID: 654823152}
   m_Layer: 0
   m_Name: Tilemap
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12850,6 +12850,37 @@ Transform:
   - {fileID: 2054557562}
   m_Father: {fileID: 1675039883}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1207911649
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1207911650}
+  m_Layer: 0
+  m_Name: PuntoRespawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1207911650
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1207911649}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6, y: -5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1265565773
 GameObject:
   m_ObjectHideFlags: 0
@@ -14085,7 +14116,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1645404741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14098,6 +14129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed8d11efb46e9cd4594e9dbb7ebdba80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  puntoRespawn: {fileID: 1207911650}
 --- !u!61 &1645404742
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14152,7 +14184,7 @@ Transform:
   m_GameObject: {fileID: 1645404740}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.9, y: -6.4, z: 0}
+  m_LocalPosition: {x: -1.9, y: -15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15537,7 +15569,7 @@ GameObject:
   - component: {fileID: 2068855445}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15603,7 +15635,7 @@ Transform:
   m_GameObject: {fileID: 2068855442}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.423, y: -7.105, z: 0}
+  m_LocalPosition: {x: -6.5, y: -7.107, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15621,8 +15653,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acbd1328328c63a40a1743d75424dcb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  jumpForce: 150
+  speed: 0.5
+  jumpForce: 3
   enemigo: {fileID: 0}
 --- !u!114 &2068855446
 MonoBehaviour:
@@ -15663,7 +15695,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!70 &2068855448
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -15715,3 +15747,4 @@ SceneRoots:
   - {fileID: 1707007043}
   - {fileID: 47327216}
   - {fileID: 189807701}
+  - {fileID: 1207911650}

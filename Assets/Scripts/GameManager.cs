@@ -10,13 +10,14 @@ public class GameManager : MonoBehaviour
     public int vidasActuales;
     public int puntaje = 0;
 
+    private bool inicializado = false;
+
     private void Awake()
     {
-        // Singleton: solo existe una instancia del GameManager
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // Persiste entre escenas
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -26,31 +27,54 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        vidasActuales = vidasMaximas;
-        UIManager.Instance?.ActualizarUI();
+        if (!inicializado)
+        {
+            vidasActuales = vidasMaximas;
+            inicializado = true;
+        }
+        ActualizarUI();
     }
 
-    // Suma puntos y actualiza UI
+    private void ActualizarUI()
+    {
+        if (UIManager.Instance != null)
+            UIManager.Instance.ActualizarUI();
+    }
+
     public void SumarPuntos(int cantidad)
     {
         puntaje += cantidad;
-        UIManager.Instance?.ActualizarUI();
+        ActualizarUI();
     }
 
-    // Resta una vida. Si llegan a 0, termina el juego
     public void PerderVida()
     {
         vidasActuales--;
-        UIManager.Instance?.ActualizarUI();
+        Debug.Log("Vidas restantes: " + vidasActuales);
+        ActualizarUI();
 
         if (vidasActuales <= 0)
+        {
+            Debug.Log("GAME OVER activado");
             GameOver();
+        }
+        else
+        {
+            Debug.Log("Reiniciando nivel, vidas: " + vidasActuales);
+            ReiniciarNivel();
+        }
+    }
+
+    private void ReiniciarNivel()
+    {
+        SceneManager.LoadScene(1);
     }
 
     private void GameOver()
     {
-        Debug.Log("GAME OVER");
-        // Recargar la escena actual (puedes cambiar esto por una pantalla de derrota)
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        inicializado = false;
+        vidasActuales = vidasMaximas;
+        puntaje = 0;
+        SceneManager.LoadScene(0);
     }
 }

@@ -7,32 +7,42 @@ public class CameraFollow : MonoBehaviour
 
     [Header("Configuración")]
     public float velocidadSeguimiento = 5f;
-    public Vector3 offset = new(2,1,-10);
-    // X positivo → la cámara va un poco adelante del jugador
-    // Y positivo → la cámara va un poco arriba
-    // Z debe ser -10 siempre en juegos 2D
+    public Vector3 offset = new Vector3(0, 0, -10);
 
     [Header("Seguimiento por eje")]
     public bool seguirX = true;
-    public bool seguirY = false; // En false, la cámara no sube/baja con el jugador
+    public bool seguirY = false;
+
+    private void Start()
+    {
+        if (jugador == null)
+        {
+            GameObject obj = GameObject.FindWithTag("Player");
+            if (obj != null)
+                jugador = obj.transform;
+        }
+
+        if (jugador != null)
+        {
+            Vector3 posInicial = jugador.position + offset;
+            posInicial.z = offset.z;
+            transform.position = posInicial;
+        }
+    }
 
     private void LateUpdate()
     {
-       
-        // LateUpdate se ejecuta después del Update del jugador,
-        // evitando que la cámara "tiemble"
+        if (jugador == null) return;
 
         Vector3 posObjetivo = transform.position;
 
         if (seguirX)
             posObjetivo.x = jugador.position.x + offset.x;
-
         if (seguirY)
             posObjetivo.y = jugador.position.y + offset.y;
 
-        posObjetivo.z = offset.z; // Siempre mantener Z fijo
+        posObjetivo.z = offset.z;
 
-        // Interpolación suave hacia la posición objetivo
         transform.position = Vector3.Lerp(
             transform.position,
             posObjetivo,
