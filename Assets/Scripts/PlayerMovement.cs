@@ -8,10 +8,6 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 3f;
     public float jumpForce = 8f;
 
-    [Header("Referencias")]
-    public Enemy enemigo;
-
-    private bool enemigoActivado = false;
     private Rigidbody2D rb;
     private int colisionesConSuelo = 0;
 
@@ -20,21 +16,16 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-
-        if (enemigo == null)
-            enemigo = FindObjectOfType<Enemy>();
     }
 
     void Update()
     {
-        float move = Input.GetAxis("Horizontal");
-        rb.velocity = new Vector2(move * speed, rb.velocity.y);
+        float move = Input.GetAxisRaw("Horizontal");
 
-        if (move != 0 && !enemigoActivado && enemigo != null)
-        {
-            enemigo.ActivarPersecucion();
-            enemigoActivado = true;
-        }
+        if (Mathf.Abs(move) < 0.5f)
+            move = 0f;
+
+        rb.velocity = new Vector2(move * speed, rb.velocity.y);
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {

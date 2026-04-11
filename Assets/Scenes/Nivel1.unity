@@ -687,10 +687,10 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.0028793067, y: -0.012793325}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5272838}
@@ -701,7 +701,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 0.22262266, y: 0.30275184}
   m_EdgeRadius: 0
 --- !u!50 &189807699
 Rigidbody2D:
@@ -791,7 +791,7 @@ Transform:
   m_GameObject: {fileID: 189807697}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.891, y: -6.963, z: 0}
+  m_LocalPosition: {x: -7.367, y: -6.963, z: 0}
   m_LocalScale: {x: 1.2155813, y: 1.5195318, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -830,8 +830,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77a4b3a261571bb45a610e60c242bf68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jugador: {fileID: 0}
   velocidad: 0.8
+  jugador: {fileID: 0}
 --- !u!1 &193160379
 GameObject:
   m_ObjectHideFlags: 0
@@ -14116,7 +14116,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1645404741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14173,7 +14173,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 20, y: 20}
+  m_Size: {x: 50, y: 2}
   m_EdgeRadius: 0
 --- !u!4 &1645404743
 Transform:
@@ -14184,7 +14184,7 @@ Transform:
   m_GameObject: {fileID: 1645404740}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.9, y: -15, z: 0}
+  m_LocalPosition: {x: -25, y: -20, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15635,7 +15635,7 @@ Transform:
   m_GameObject: {fileID: 2068855442}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.5, y: -7.107, z: 0}
+  m_LocalPosition: {x: -6.677, y: -7.098, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15653,9 +15653,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acbd1328328c63a40a1743d75424dcb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.5
+  speed: 1
   jumpForce: 3
-  enemigo: {fileID: 0}
 --- !u!114 &2068855446
 MonoBehaviour:
   m_ObjectHideFlags: 0
