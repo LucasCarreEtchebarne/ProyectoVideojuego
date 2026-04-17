@@ -11,15 +11,12 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null)
-            Instance = this;
-        else
-            Destroy(gameObject);
+       
+        Instance = this;
     }
 
     private void Start()
     {
-        Debug.Log("UIManager Start - Vidas: " + GameManager.Instance?.vidasActuales);
         ActualizarUI();
     }
 
@@ -34,4 +31,3 @@ public class UIManager : MonoBehaviour
             textoVidas.text = "Vidas: " + GameManager.Instance.vidasActuales;
     }
 }
-

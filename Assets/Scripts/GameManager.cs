@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
@@ -25,13 +26,29 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void Start()
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         if (!inicializado)
         {
             vidasActuales = vidasMaximas;
             inicializado = true;
         }
+        StartCoroutine(ActualizarUIDelayed());
+    }
+
+    private IEnumerator ActualizarUIDelayed()
+    {
+        yield return null;
         ActualizarUI();
     }
 
@@ -50,6 +67,7 @@ public class GameManager : MonoBehaviour
     public void PerderVida()
     {
         vidasActuales--;
+        puntaje = 0;
         Debug.Log("Vidas restantes: " + vidasActuales);
         ActualizarUI();
 
