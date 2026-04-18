@@ -93,6 +93,6 @@ public class GameManager : MonoBehaviour
         inicializado = false;
         vidasActuales = vidasMaximas;
         puntaje = 0;
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(2);
     }
 }

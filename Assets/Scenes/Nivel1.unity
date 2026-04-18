@@ -493,6 +493,7 @@ GameObject:
   - component: {fileID: 140682921}
   - component: {fileID: 140682920}
   - component: {fileID: 140682919}
+  - component: {fileID: 140682922}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -544,6 +545,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &140682922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140682918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1e74a8c2e39a284497e4441b4a5df0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameOverPanel: {fileID: 0}
 --- !u!1 &158882203
 GameObject:
   m_ObjectHideFlags: 0
@@ -2511,7 +2525,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.029818604, z: -0, w: 0.99955535}
-  m_LocalPosition: {x: -6.28, y: -6.97, z: -0.53}
+  m_LocalPosition: {x: -6.207, y: -6.741, z: -0.53}
   m_LocalScale: {x: 0.825, y: 1.3875, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -33757,6 +33771,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   jumpForce: 3
+  distanciaPorPunto: 1
+  puntosPorAvance: 10
 --- !u!114 &2068855446
 MonoBehaviour:
   m_ObjectHideFlags: 0
