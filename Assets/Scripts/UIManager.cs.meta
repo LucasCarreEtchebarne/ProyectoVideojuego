@@ -3,7 +3,12 @@ guid: a4dfb6dd9a8003546ad53d4e53de9b89
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - textoPuntaje: {instanceID: 0}
+  - textoVidas: {instanceID: 0}
+  - panelVictoria: {instanceID: 0}
+  - textoPuntajeFinal: {instanceID: 0}
+  - textoVidasFinal: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

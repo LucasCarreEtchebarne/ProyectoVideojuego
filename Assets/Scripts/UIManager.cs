@@ -11,12 +11,13 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
-       
+        // Solo inicializaba la instancia
         Instance = this;
     }
 
     private void Start()
     {
+        // Llamaba a la actualización al arrancar
         ActualizarUI();
     }
 
@@ -24,6 +25,7 @@ public class UIManager : MonoBehaviour
     {
         if (GameManager.Instance == null) return;
 
+        // Buscaba las variables directamente del GameManager
         if (textoPuntaje != null)
             textoPuntaje.text = "Puntaje: " + GameManager.Instance.puntaje;
 
